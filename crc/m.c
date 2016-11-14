@@ -53,6 +53,9 @@ void main()
 
   printf("Client Connected \r\n");
 
+
+  Sleep(4000);
+
   sent = 0x01;
 
   i = j = 0;
@@ -62,7 +65,7 @@ void main()
 	  if (sent & 0x01)
 	  {
     	es = dn.dnaWrite(csd, dbg, strlen(dbg), 0, 0);
-	    printf("write : %d \r\n", es);
+	    printf("%s -> write : %d \r\n", dbg, es);
       sent = 0x01;
     }
     //if (es > 0)
@@ -80,6 +83,6 @@ void main()
     //    sent = 0x00;
     //  }
     //}
-	  Sleep(3000);
+	  Sleep(1000);
   }
 }

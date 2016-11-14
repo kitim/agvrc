@@ -18,22 +18,26 @@ typedef struct
 {
   ////SoftwareSerial srl(6,7);
   
-  char buf[UART_BUF_SZ];
-  char cbuf[CBUF_COUNT][UART_BUF_SZ];
-  int  idx;
-  int  cidx;
+  //char buf[UART_BUF_SZ];
+  //char cbuf[CBUF_COUNT][UART_BUF_SZ];
+  //int  idx;
+  //int  cidx;
 
   int (*uwrite)(char*, int);
-  int (*uread)();
+  char (*uread)();
   int (*ustatus)(char*, int);
   
 }tagWFM;
 
-int wfm_check_ack(tagWFM* p, char* ack, int sz);
-int wfm_uread(tagWFM* p, int count, char* ack, int sz);
+//int wfm_check_ack(tagWFM* p, char* ack, int sz, char* out, int osz, int m);
+//int wfm_uread_check_ack(tagWFM* p, int count, char* ack, int sz, char* out, int osz, int m);
+void wfm_debug(tagWFM* p, char* buf, int sz, int mode);
+int wfm_uread_check(tagWFM* p, char* buf, int sz, char* ack, int asz, int count);
+int wfm_uread(tagWFM* p, char* buf, int sz);
+int wfm_check(tagWFM* p, char* buf, int sz, char* ack, int asz);
 int wfm_uwrite(tagWFM* p, char* cmd, char* arg);
 int wfm_write(tagWFM* p, char* buf, int sz, int msec);
-int wfm_read(tagWFM* p, char* buf, int sz);
+//int wfm_read(tagWFM* p, char* buf, int sz);
 int wfm_str_dlmtr(tagWFM* p, char* str, char* dlmtr, int idx, char* out);
 
 #ifdef __cplusplus
